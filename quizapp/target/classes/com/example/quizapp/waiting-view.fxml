@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quizapp.controller.WaitingController">
+   <children>
+      <BorderPane prefHeight="525.0" prefWidth="691.0">
+         <top>
+            <AnchorPane prefHeight="139.0" prefWidth="691.0" style="-fx-background-color: #69AAF1;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="roomIdLabel" layoutX="14.0" layoutY="47.0" prefHeight="45.0" prefWidth="365.0" text="Room ID" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="n_playersLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="499.0" layoutY="47.0" prefHeight="45.0" prefWidth="164.0" text="players" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #F1C98D;" BorderPane.alignment="CENTER">
+               <children>
+                  <ListView fx:id="playerListView" fixedCellSize="5.0" layoutX="201.0" layoutY="15.0" prefHeight="357.0" prefWidth="290.0" style="-fx-background-color: #F1C98D;" />
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
