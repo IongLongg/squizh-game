@@ -1,4 +1,4 @@
-package com.example.quizapp.constant;
+package com.company.constant;
 
 public class Constant {
     public static final String SERVER_IP = "localhost";
@@ -9,5 +9,5 @@ public class Constant {
     // port numbers
 //    public static final int RTP_PORT = 2000;
 //    public static final int UPLOAD_PORT = 2000 ;
-    public static final int SERVER_PORT = 2000;
+    public static final int SERVER_PORT = 1000;
 }

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quizapp.controller.WaitingController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.WaitingController">
    <children>
       <BorderPane prefHeight="525.0" prefWidth="691.0">
          <top>
@@ -28,7 +28,7 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #F1C98D;" BorderPane.alignment="CENTER">
                <children>
-                  <ListView fx:id="playerListView" fixedCellSize="5.0" layoutX="201.0" layoutY="15.0" prefHeight="357.0" prefWidth="290.0" style="-fx-background-color: #F1C98D;" />
+                  <ListView fx:id="quizTitleListView" layoutX="201.0" layoutY="15.0" prefHeight="357.0" prefWidth="290.0" style="-fx-background-color: #F1C98D;" />
                </children>
             </AnchorPane>
          </center>
