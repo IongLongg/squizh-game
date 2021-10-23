@@ -1,31 +1,37 @@
 package com.company;
 
-import com.company.model.Question;
+import com.company.model.ClientRequest;
+import com.company.model.Topic;
 import com.google.gson.Gson;
 import com.google.gson.reflect.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.lang.reflect.Type;
-import java.net.Socket;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class WaitingController implements Initializable {
     DataInputStream dis;
-    @FXML
-    public Label roomIdLabel;
-    @FXML
-    public Label n_playersLabel;
+    ArrayList<Topic> topicList;
 
     @FXML
-    private ListView<String> quizTitleListView;
+    public Label roomIdLabel;
+
+    @FXML
+    private ListView<String> topicTitleListView;
+
+    @FXML
+    private Button joinRoomBtn;
 
 
     @Override
@@ -37,18 +43,27 @@ public class WaitingController implements Initializable {
         this.dis = dis;
 
         try {
-            System.out.println(dis.readUTF());
-            Type typeObject = new TypeToken<>
+            String roomListJson = dis.readUTF();
+            System.out.println(roomListJson);
             Gson gson = new Gson();
-;            //
-//            List<Question> quizList = (List<Question>) dis.readObject();
-//            quizList.forEach((quiz) -> quizTitleListView.getItems().add(quiz.getTitle()));
+            Type typeObject = new TypeToken<ArrayList<Topic>>(){}.getType();
+            topicList = gson.fromJson(roomListJson, typeObject);
+            List<String> topicNames = new ArrayList<>();
+            topicList.forEach(topic -> {
+                topicNames.add(topic.getTopicName());
+            });
+            topicTitleListView.getItems().addAll(topicNames);
+            topicTitleListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void setRoom(String roomId) {
-        roomIdLabel.setText("RoomID " + roomId);
+    @FXML
+    protected void joinRoom(ActionEvent event) {
+        Integer selectedIndex = topicTitleListView.getSelectionModel().getSelectedIndex();
+        Integer selectedTopicId = topicList.get(selectedIndex).getTopicId();
+        String userId = "1234";
+        ClientRequest clientRequest = new ClientRequest(1, selectedTopicId.toString() + "," + userId);
     }
 }

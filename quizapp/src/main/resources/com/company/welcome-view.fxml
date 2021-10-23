@@ -24,7 +24,7 @@
                      </font>
                   </Label>
                   <TextField fx:id="nameText" layoutX="296.0" layoutY="112.0" prefHeight="26.0" prefWidth="211.0" />
-                  <Button fx:id="joinButton" alignment="CENTER" layoutX="149.0" layoutY="247.0" mnemonicParsing="false" onAction="#joinRoom" prefHeight="66.0" prefWidth="362.0" style="-fx-background-color: #A08F77;" text="JOIN NOW" textAlignment="JUSTIFY" textFill="WHITE">
+                  <Button fx:id="joinButton" alignment="CENTER" layoutX="149.0" layoutY="247.0" mnemonicParsing="false" onAction="#joinGame" prefHeight="66.0" prefWidth="362.0" style="-fx-background-color: #A08F77;" text="JOIN NOW" textAlignment="JUSTIFY" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>

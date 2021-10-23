@@ -6,5 +6,6 @@ module com.example.quizapp {
 
 
     opens com.company to javafx.fxml;
+    opens com.company.model to com.google.gson;
     exports com.company;
 }

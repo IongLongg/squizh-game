@@ -1,6 +1,5 @@
 package com.company;
 
-import com.company.model.Question;
 import com.company.constant.Constant;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +17,6 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
-import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -44,7 +42,7 @@ public class WelcomeController implements Initializable {
     }
 
     @FXML
-    protected void joinRoom(ActionEvent event) {
+    protected void joinGame(ActionEvent event) {
 //        createConnection();
 
         String name = nameText.getText();
