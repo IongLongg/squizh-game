@@ -13,7 +13,12 @@
          <top>
             <AnchorPane prefHeight="137.0" prefWidth="670.0" style="-fx-background-color: #69AAF1;" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="roomIdLabel" layoutX="14.0" layoutY="47.0" prefHeight="45.0" prefWidth="365.0" text="Select room" textFill="WHITE">
+                  <Label fx:id="userIdLabel" layoutX="14.0" layoutY="24.0" prefHeight="45.0" prefWidth="661.0" text="ID" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="userNameLabel" layoutX="14.0" layoutY="69.0" prefHeight="45.0" prefWidth="660.0" text="Display Name" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="30.0" />
                      </font>
@@ -25,7 +30,7 @@
             <AnchorPane prefHeight="380.0" prefWidth="686.0" style="-fx-background-color: #F1C98D;" BorderPane.alignment="CENTER">
                <children>
                   <ListView fx:id="topicTitleListView" layoutX="201.0" layoutY="15.0" prefHeight="288.0" prefWidth="290.0" style="-fx-background-color: #F1C98D;" />
-                  <Button fx:id="joinRoomBtn" layoutX="263.0" layoutY="323.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="166.0" text="JOIN ROOM" onAction="#joinRoom"/>
+                  <Button fx:id="joinRoomBtn" layoutX="263.0" layoutY="323.0" mnemonicParsing="false" onAction="#joinRoom" prefHeight="39.0" prefWidth="166.0" text="JOIN ROOM" />
                </children>
             </AnchorPane>
          </center>

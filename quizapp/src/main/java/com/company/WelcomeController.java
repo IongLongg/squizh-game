@@ -1,6 +1,9 @@
 package com.company;
 
 import com.company.constant.Constant;
+import com.company.constant.RequestCode;
+import com.company.model.ClientRequest;
+import com.google.gson.Gson;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,8 +46,6 @@ public class WelcomeController implements Initializable {
 
     @FXML
     protected void joinGame(ActionEvent event) {
-//        createConnection();
-
         String name = nameText.getText();
         if (name.isEmpty()) {
             alertText.setText("Name is required");
@@ -54,7 +55,10 @@ public class WelcomeController implements Initializable {
             try {
                 dos = new DataOutputStream(client.getOutputStream());
                 dis = new DataInputStream(client.getInputStream());
-                dos.writeUTF(name);
+                ClientRequest request = new ClientRequest(RequestCode.USER_JOIN_GAME, name);
+                Gson gson = new Gson();
+                String jsonRequest = gson.toJson(request);
+                dos.writeUTF(jsonRequest);
                 dos.flush();
 
                 System.out.println("User: " + name);
@@ -62,7 +66,7 @@ public class WelcomeController implements Initializable {
                 Parent waitingViewParent = (Parent) fxmlLoader.load();
 
                 WaitingController waitingController = fxmlLoader.getController();
-                waitingController.setDataInputStream(dis);
+                waitingController.setDataStream(dis, dos);
 
                 Scene waitingViewScene = new Scene(waitingViewParent);
                 Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();

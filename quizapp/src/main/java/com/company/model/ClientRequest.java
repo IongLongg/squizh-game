@@ -2,11 +2,11 @@ package com.company.model;
 
 public class ClientRequest {
     private int code;
-    private String clientAction;
+    private String data;
 
-    public ClientRequest(int code, String clientAction) {
+    public ClientRequest(int code, String data) {
         this.code = code;
-        this.clientAction = clientAction;
+        this.data = data;
     }
 
     public int getCode() {
@@ -17,11 +17,11 @@ public class ClientRequest {
         this.code = code;
     }
 
-    public String getClientAction() {
-        return clientAction;
+    public String getData() {
+        return data;
     }
 
-    public void setClientAction(String clientAction) {
-        this.clientAction = clientAction;
+    public void setData(String data) {
+        this.data = data;
     }
 }
