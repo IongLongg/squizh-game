@@ -7,10 +7,9 @@ public class User implements Serializable {
     private String userName;
     private Integer userPoint;
 
-    public User(String userId, String userName, Integer userPoint) {
+    public User(String userId, String userName) {
         this.userId = userId;
         this.userName = userName;
-        this.userPoint = userPoint;
     }
 
     public String getUserId() {

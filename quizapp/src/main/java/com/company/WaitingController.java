@@ -63,13 +63,13 @@ public class WaitingController implements Initializable {
             // display room list
             String roomListJson = dis.readUTF();
             System.out.println(roomListJson);
-            Type typeTopicList = new TypeToken<ArrayList<Room>>(){}.getType();
-            roomList = gson.fromJson(roomListJson, typeTopicList);
-            List<String> topicNames = new ArrayList<>();
+            Type typeRoomList = new TypeToken<ArrayList<Room>>(){}.getType();
+            roomList = gson.fromJson(roomListJson, typeRoomList);
+            List<String> roomNames = new ArrayList<>();
             roomList.forEach(room -> {
-                topicNames.add(room.getTopicName());
+                roomNames.add(room.getRoomName());
             });
-            topicTitleListView.getItems().addAll(topicNames);
+            topicTitleListView.getItems().addAll(roomNames);
             topicTitleListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         } catch (IOException e) {
             e.printStackTrace();
@@ -79,13 +79,19 @@ public class WaitingController implements Initializable {
     @FXML
     protected void joinRoom(ActionEvent event) {
         Integer selectedIndex = topicTitleListView.getSelectionModel().getSelectedIndex();
-        Integer selectedTopicId = roomList.get(selectedIndex).getTopicId();
+        Integer selectedTopicId = roomList.get(selectedIndex).getRoomId();
         ClientRequest request = new ClientRequest(RequestCode.USER_JOIN_ROOM, currentUser.getUserId() + "," + selectedTopicId.toString());
         Gson gson = new Gson();
         String jsonRequest = gson.toJson(request);
         try {
             dos.writeUTF(jsonRequest);
             dos.flush();
+
+            String roomCode = dis.readUTF();
+            System.out.println(roomCode);
+            System.out.println("======");
+            String roomData = dis.readUTF();
+            System.out.println(roomData);
         } catch (IOException e) {
             e.printStackTrace();
         }
