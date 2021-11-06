@@ -2,7 +2,7 @@ package com.company;
 
 import com.company.constant.RequestCode;
 import com.company.model.ClientRequest;
-import com.company.model.Topic;
+import com.company.model.Room;
 import com.company.model.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.*;
@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 public class WaitingController implements Initializable {
     DataInputStream dis;
     DataOutputStream dos;
-    ArrayList<Topic> topicList;
+    ArrayList<Room> roomList;
     User currentUser;
     Gson gson = new Gson();
 
@@ -63,11 +63,11 @@ public class WaitingController implements Initializable {
             // display room list
             String roomListJson = dis.readUTF();
             System.out.println(roomListJson);
-            Type typeTopicList = new TypeToken<ArrayList<Topic>>(){}.getType();
-            topicList = gson.fromJson(roomListJson, typeTopicList);
+            Type typeTopicList = new TypeToken<ArrayList<Room>>(){}.getType();
+            roomList = gson.fromJson(roomListJson, typeTopicList);
             List<String> topicNames = new ArrayList<>();
-            topicList.forEach(topic -> {
-                topicNames.add(topic.getTopicName());
+            roomList.forEach(room -> {
+                topicNames.add(room.getTopicName());
             });
             topicTitleListView.getItems().addAll(topicNames);
             topicTitleListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -79,7 +79,7 @@ public class WaitingController implements Initializable {
     @FXML
     protected void joinRoom(ActionEvent event) {
         Integer selectedIndex = topicTitleListView.getSelectionModel().getSelectedIndex();
-        Integer selectedTopicId = topicList.get(selectedIndex).getTopicId();
+        Integer selectedTopicId = roomList.get(selectedIndex).getTopicId();
         ClientRequest request = new ClientRequest(RequestCode.USER_JOIN_ROOM, currentUser.getUserId() + "," + selectedTopicId.toString());
         Gson gson = new Gson();
         String jsonRequest = gson.toJson(request);

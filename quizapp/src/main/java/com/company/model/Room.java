@@ -2,15 +2,13 @@ package com.company.model;
 
 import java.io.Serializable;
 
-public class Topic implements Serializable {
+public class Room implements Serializable {
     private int topicId;
     private String topicName;
-    private int topicQuestionCount;
 
-    public Topic(int topicId, String topicName, int topicQuestionCount) {
+    public Room(int topicId, String topicName) {
         this.topicId = topicId;
         this.topicName = topicName;
-        this.topicQuestionCount = topicQuestionCount;
     }
 
     public int getTopicId() {
@@ -28,14 +26,5 @@ public class Topic implements Serializable {
     public void setTopicName(String topicName) {
         this.topicName = topicName;
     }
-
-    public int getTopicQuestionCount() {
-        return topicQuestionCount;
-    }
-
-    public void setTopicQuestionCount(int topicQuestionCount) {
-        this.topicQuestionCount = topicQuestionCount;
-    }
-
 
 }
